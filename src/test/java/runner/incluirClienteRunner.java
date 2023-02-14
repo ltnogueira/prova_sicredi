@@ -11,7 +11,7 @@ import io.cucumber.junit.CucumberOptions;
 		plugin = {}, 
 		features = "classpath:features/desafio1.feature", 
 		glue = {"steps"},
-		tags = "@InluirCliente",
+		tags = "@IncluirCliente",
 		monochrome = true,
 		dryRun = true
 	)

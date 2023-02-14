@@ -7,7 +7,7 @@ Funcionalidade:  Acessar Aplicacao e deletar Bootstrap
 
 Contexto: 
 @DeletarCliente
-Cenario: acessar Url
+Cenario: Deletar Cliente
 	 Dado que acessei o site do desafio
    E seleciono a versao do Bootstraper
    E clico no botao "Add Customer"

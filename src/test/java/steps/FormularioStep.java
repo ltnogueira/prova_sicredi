@@ -23,10 +23,14 @@ public class FormularioStep extends CustomUtils {
 	
 	WebDriver driver = new ChromeDriver();
 	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+	paginaDesafioPage paginaDesafio = new paginaDesafioPage();
+	
+	
 	@Dado("^que acessei o site do desafio$")
 	public void deveraVerificarORotuloTotalHoje() throws Exception {
 		driver.get("https://www.grocerycrud.com/v1.x/demo/bootstrap_theme");
 		  driver.manage().window().maximize();
+		  paginaDesafio.capturarTela();
 	}
 
 	@SuppressWarnings("deprecation")
@@ -36,6 +40,7 @@ public class FormularioStep extends CustomUtils {
 		  WebElement checkbox = driver.findElement(By.id("switch-version-select"));
           checkbox.click();
 		  WebElement checkbox2 = driver.findElement(By.xpath("//select[@id='switch-version-select']/option[2]"));
+		  paginaDesafio.capturarTela();
           checkbox2.click();
 
 	}
@@ -46,6 +51,7 @@ public class FormularioStep extends CustomUtils {
 		driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
         WebElement btnAddCliente = driver.findElement(By.xpath("//a[contains(.,'"+ arg1 +"')]"));
         // Clicar no botão de adicionar
+        paginaDesafio.capturarTela();
         btnAddCliente.click();
 		
 		
@@ -57,6 +63,7 @@ public class FormularioStep extends CustomUtils {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
 	    wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("field-customerName")));
 		driver.findElement(By.id("field-customerName")).sendKeys(arg1);
+		paginaDesafio.capturarTela();
 	}
 
 	@E("^preencho SobreNome \"([^\"]*)\"$")
@@ -114,6 +121,7 @@ public class FormularioStep extends CustomUtils {
 	@E("^preencho Limite de Credito \"([^\"]*)\"$")
 	public void preenchoLimiteDeCredito(String arg1) {
 		driver.findElement(By.id("field-creditLimit")).sendKeys(arg1);
+		paginaDesafio.capturarTela();
 	}
 	@Entao("^verifico se vai apresentar a mensagem \"([^\"]*)\"$")
 	public void verificoSeVaiApresentarAMensagem(String arg1) throws Exception {
@@ -121,6 +129,7 @@ public class FormularioStep extends CustomUtils {
 		WebDriverWait waitAssert = new WebDriverWait(driver, Duration.ofSeconds(20));
 	    String expectedMessage = driver.findElement(By.xpath("//p[contains(.,'Your data has been successfully stored into the database. Edit Customer or Go back to list')]")).getText();
 	    waitAssert.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//p[contains(.,'Your data has been successfully stored into the database. Edit Customer or Go back to list')]")));
+	    paginaDesafio.capturarTela();
 	    Assert.assertEquals(expectedMessage, arg1);
 	}
 
@@ -131,6 +140,7 @@ public class FormularioStep extends CustomUtils {
 		  driver.findElement(By.xpath("//div[@id='field_salesRepEmployeeNumber_chosen']/div[1]/div[1]/input[1]")).sendKeys(arg1);
 			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
 		  WebElement cxEmpregador2 = driver.findElement(By.xpath("//em[1]"));
+		  paginaDesafio.capturarTela();
 		  cxEmpregador2.click();
 		  
 	}
@@ -139,6 +149,7 @@ public class FormularioStep extends CustomUtils {
 	public void clicoNoBotaoDeSalvar() throws Throwable {
 	      WebElement btnSalvar = driver.findElement(By.xpath("//button[contains(@type,'submit')]"));
 	        // Clicar no botão de adicionar
+	      paginaDesafio.capturarTela();
 	      btnSalvar.click();
 	}
 
@@ -146,6 +157,7 @@ public class FormularioStep extends CustomUtils {
 	public void clicoNoLink(String arg1) throws Throwable {
 		driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
         WebElement linkRetornarList = driver.findElement(By.xpath("//a[contains(.,'"+ arg1 +"')]"));
+        paginaDesafio.capturarTela();
         linkRetornarList.click();
 	}
 
@@ -153,6 +165,7 @@ public class FormularioStep extends CustomUtils {
 	public void facoAPesquisaComOTexto(String arg1) throws Throwable {
 		driver.findElement(By.xpath("//input[contains(@name,'customerName')]")).sendKeys(arg1);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[contains(@name,'customerName')]")));
+		paginaDesafio.capturarTela();
 		
 	}
 
@@ -161,6 +174,7 @@ public class FormularioStep extends CustomUtils {
 		Thread.sleep(10000);
 		WebElement cbAction = driver.findElement(By.xpath("//input[@class='select-all-none']"));
 		//WebElement cbAction = driver.findElement(By.xpath("//input[contains(@data-id,'103')]"));
+		paginaDesafio.capturarTela();
         cbAction.click();
 	}
 
@@ -171,6 +185,7 @@ public class FormularioStep extends CustomUtils {
 	    String expectedMessage = "Are you sure that you want to delete this 1 item?";
 	    String actualMessage = driver.findElement(By.xpath("//p[@class='alert-delete-multiple-one'][contains(.,'Are you sure that you want to delete this 1 item?')]")).getText();
 	    wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//p[@class='alert-delete-multiple-one'][contains(.,'Are you sure that you want to delete this 1 item?')]")));
+	    paginaDesafio.capturarTela();
 	    Assert.assertEquals(expectedMessage,actualMessage );
   }
 
@@ -180,6 +195,7 @@ public class FormularioStep extends CustomUtils {
 		Thread.sleep(6000);
 	    String expectedMessage = driver.findElement(By.xpath("//p[contains(.,'Your data has been successfully deleted from the database.')]")).getText();
 	    wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//p[contains(.,'Your data has been successfully deleted from the database.')]")));
+	    paginaDesafio.capturarTela();
 	    Assert.assertEquals(expectedMessage, arg1);
 	}
 
@@ -187,6 +203,7 @@ public class FormularioStep extends CustomUtils {
 	public void clicoNoBotaoDeleteDoPopup() throws Throwable {
 		Thread.sleep(3000);
 		WebElement btnDelete = driver.findElement(By.xpath("//button[contains(@data-target,'/v1.x/demo/bootstrap_theme/delete_multiple')]"));
+		paginaDesafio.capturarTela();
 		btnDelete.click();
 		
 	}
@@ -195,6 +212,7 @@ public class FormularioStep extends CustomUtils {
 	public void clicoNoLinkGoBackToList() throws Throwable {
 		Thread.sleep(7000);
 		WebElement linkRetornar = driver.findElement(By.xpath("//a[contains(.,'Go back to list')]"));
+		paginaDesafio.capturarTela();
 		linkRetornar.click();
 		
 	}

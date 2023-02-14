@@ -6,8 +6,8 @@
 Funcionalidade:  Acessar Aplicacao adicionar novo cliente para Bootstrap
 
 Contexto: 
-@InluirCliente
-Cenario: acessar Url
+@IncluirCliente
+Cenario: Incluir Cliente
 	 Dado que acessei o site do desafio
    E seleciono a versao do Bootstraper
    E clico no botao "Add Customer"
